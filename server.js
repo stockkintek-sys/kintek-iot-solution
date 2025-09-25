@@ -159,6 +159,7 @@ function listenNewTransactions() {
 
       try {
         await rtdb.ref(`Vending-System/${machine}/callback`).remove();
+        await rtdb.ref(`Vending-System/${machine}/response`).remove();
 
         const { data: abaResponse } = await axios.post(
           process.env.ABA_PAYWAY_API_URL,
@@ -203,3 +204,4 @@ process.on("uncaughtException", (err) =>
 // ===== Start Server =====
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+
