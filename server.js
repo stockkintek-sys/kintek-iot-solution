@@ -155,6 +155,7 @@ function listenNewTransactions() {
       });
 
       // console.log("Payload:", payload);
+      console.log(`Request tran_id ${tran_id}`);
       console.log(`➡️ Sending to ABA PayWay for ${machine}...`);
 
       try {
@@ -173,7 +174,7 @@ function listenNewTransactions() {
           timestamp: getReqTime(),
           requestTime: data.request.time,
         });
-
+        console.log(`Response tran_id ${tran_id}`);
         console.log(`✅ ABA payment processed for ${machine}`);
       } catch (err) {
         console.error(
@@ -204,4 +205,5 @@ process.on("uncaughtException", (err) =>
 // ===== Start Server =====
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+
 
